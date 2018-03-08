@@ -15,6 +15,6 @@ const Styles = StyleSheet.create({
     container: {
         height:StyleSheet.hairlineWidth,
         backgroundColor: '#dfe6e9',
-        marginTop:20
+        
     },
 });

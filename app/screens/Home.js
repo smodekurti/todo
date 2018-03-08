@@ -10,7 +10,7 @@ import {
 import Login from "../components/Login/login";
 import NewToDoItem from "../components/NewToDoItem/NewToDoItem";
 import Divider from '../components/Divider/divider';
-import ToDoItem from '../components/ToDoItem/ToDoItem';
+import ToDoItemList from '../components/ToDoItem/ToDoItemList';
 
 class Home extends Component {
   render() {
@@ -19,8 +19,8 @@ class Home extends Component {
         <StatusBar barStyle="light-content" />
         <KeyboardAvoidingView behavior="padding">
            <NewToDoItem />
-      
-           <ToDoItem />
+
+           <ToDoItemList />
         </KeyboardAvoidingView>
       </View>
     );
