@@ -4,11 +4,13 @@ import {
   Text,
   StyleSheet,
   StatusBar,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
+  Dimensions
 } from "react-native";
 import Login from "../components/Login/login";
 import NewToDoItem from "../components/NewToDoItem/NewToDoItem";
 import Divider from '../components/Divider/divider';
+import ToDoItem from '../components/ToDoItem/ToDoItem';
 
 class Home extends Component {
   render() {
@@ -17,7 +19,8 @@ class Home extends Component {
         <StatusBar barStyle="light-content" />
         <KeyboardAvoidingView behavior="padding">
            <NewToDoItem />
-           <Divider />
+      
+           <ToDoItem />
         </KeyboardAvoidingView>
       </View>
     );
@@ -29,6 +32,9 @@ const Styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#485163",
     alignItems: "center",
+    justifyContent: 'center',
+    //width: Dimensions.get('window').width-10
+    //marginLeft:
     
   }
 });
