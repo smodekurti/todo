@@ -43,8 +43,8 @@ export default class ToDoItem extends Component{
            marginBottom: 20
         },
         listItem:{
-            marginTop: 10,
-            marginBottom:10,
+            marginTop: 20,
+            marginBottom:20,
         },
         title:{
             color: 'white',
