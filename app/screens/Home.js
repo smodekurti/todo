@@ -11,6 +11,7 @@ import Login from "../components/Login/login";
 import NewToDoItem from "../components/NewToDoItem/NewToDoItem";
 import Divider from '../components/Divider/divider';
 import ToDoItemList from '../components/ToDoItem/ToDoItemList';
+import {connect} from 'react-redux';
 
 class Home extends Component {
   render() {
@@ -18,7 +19,9 @@ class Home extends Component {
       <View style={Styles.container}>
         <StatusBar barStyle="light-content" />
         <KeyboardAvoidingView behavior="padding">
-           <NewToDoItem />
+           <NewToDoItem 
+            
+           />
 
            <ToDoItemList />
         </KeyboardAvoidingView>
@@ -26,6 +29,8 @@ class Home extends Component {
     );
   }
 }
+
+
 
 const Styles = StyleSheet.create({
   container: {

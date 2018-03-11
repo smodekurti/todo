@@ -1,16 +1,36 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {updateToDo} from '../../actions/NewToDo';
 import {ScrollView, View, Image, Text,TextInput,TouchableOpacity, StyleSheet, Dimensions, Keyboard} from 'react-native';
 import { List, ListItem , CheckBox} from 'react-native-elements'
+import Styles from './Styles';
 
+class ToDoItem extends Component{
+    static propTypes = {
+        todoUUID : PropTypes.string,
+        dispatch : PropTypes.func
+    }
 
-export default class ToDoItem extends Component{
-
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state={
             switched:false,
         }
     }
+
+    dispatchToUpdate = () =>{
+
+        
+        let todoItem = {
+            uuid:this.props.todoUUID,
+            updatedDate:Date.now(),
+            isComplete:this.state.switched
+        }
+        this.props.dispatch(updateToDo(todoItem));
+    }
+    
+
 
     render(){
         return(
@@ -19,10 +39,14 @@ export default class ToDoItem extends Component{
                 title={this.props.title}
                 hideChevron={true}
                 switchButton
-                switched={this.state.switched}
-                onSwitch={() => {
-                    this.setState({switched:!this.state.switched});
-               }}
+                switched={this.props.isComplete}
+                onSwitch= {() => {
+                    this.setState(
+                        (state) => ({switched:!this.state.switched}),
+                        this.dispatchToUpdate
+                     )
+                    
+                }}
                 containerStyle={Styles.listItem}
                 titleStyle={this.state.switched ? Styles.titleComplete : Styles.title}
             />
@@ -33,29 +57,7 @@ export default class ToDoItem extends Component{
 }
 
 
-    const Styles = StyleSheet.create({
-        container: {
-            flex:1,
-        },
-        list:{
-           backgroundColor: '#485163',
-           borderBottomColor: '#f1f2f6',
-           marginBottom: 20
-        },
-        listItem:{
-            marginTop: 20,
-            marginBottom:20,
-        },
-        title:{
-            color: 'white',
-            textAlignVertical:'center'
-            
-        },
-        titleComplete:{
-            color: '#00b894',
-            textDecorationLine: 'line-through',
-            fontWeight:'900',
-            textDecorationStyle:'solid',
-            textDecorationColor:'#2d3436'
-        }
-    })
+
+export default connect()(ToDoItem);
+
+    

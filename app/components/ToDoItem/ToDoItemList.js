@@ -1,63 +1,40 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {ScrollView, View, Image, Text,TextInput,TouchableOpacity, StyleSheet, Dimensions, Keyboard} from 'react-native';
 import { List, ListItem , CheckBox} from 'react-native-elements'
 import ToDoItem from './ToDoItem';
+import Styles from './Styles';
+import {connect} from 'react-redux';
 
-const list = [
-    {
-      name: 'Amy Farha',
-      avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
-      subtitle: 'Vice President'
-    },
-    {
-      name: 'Chris Jackson',
-      avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-      subtitle: 'Vice Chairman'
-    },
-    {
-        name: 'Amy Farha',
-        avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
-        subtitle: 'Vice President'
-      },
-      {
-        name: 'Chris Jackson',
-        avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-        subtitle: 'Vice Chairman'
-      },
-      {
-        name: 'Amy Farha',
-        avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
-        subtitle: 'Vice President'
-      },
-      {
-        name: 'Chris Jackson',
-        avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-        subtitle: 'Vice Chairman'
-      },   {
-        name: 'Amy Farha',
-        avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
-        subtitle: 'Vice President'
-      },
-      {
-        name: 'Chris Jackson',
-        avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-        subtitle: 'Vice Chairman'
-      },
-    
-    
- 
-  ]
+
+
 
 
 
 class ToDoItemList extends Component{
 
   
+  constructor(props){
+    super(props);
+
+  }
+
+  componentWillMount(){
+    //console.log(this.props.todoItems);
+  }
+
+  static propTypes = {
+    todoItems : PropTypes.object,
+    
+  }
     
     render(){
         
          const containerStyles= [Styles.title];
-         
+         let list = Object.values(this.props.todoItems);
+         console.log(list);
+         if(list == null)
+          list = new Array();
 
         return(
             <ScrollView style={Styles.container} showsVerticalScrollIndicator={false} > 
@@ -66,8 +43,10 @@ class ToDoItemList extends Component{
                     list.map((l, i) => (
                         <ToDoItem 
                             index={i}
-                            title={l.name}
+                            title={l.description}
                             key={i}
+                            todoUUID={l.uuid}
+                            isComplete ={l.isComplete}
                         />
                     ))
                 }
@@ -77,29 +56,14 @@ class ToDoItemList extends Component{
     }
 }
 
-export default ToDoItemList;
+const mapStateToProps = (state) => {
+  const todoItems = state.newToDoReducer.todoItems;;
+ 
+  return{
+    todoItems:todoItems
+  };
+};
 
-const Styles = StyleSheet.create({
-    container: {
-        flex:1,
-    },
-    list:{
-       backgroundColor: '#485163',
-       borderBottomColor: '#f1f2f6',
-       marginBottom: 20
-    },
-    listItem:{
-        marginTop: 10,
-        marginBottom:10,
-    },
-    title:{
-        color: 'white',
-        
-    },
-    titleComplete:{
-        color: 'white',
-        textDecorationLine: 'line-through',
-        
+export default connect(mapStateToProps) (ToDoItemList);
+//export default ToDoItemList
 
-    }
-})
