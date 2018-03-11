@@ -15,13 +15,11 @@ class ToDoItem extends Component{
     constructor(props){
         super(props);
         this.state={
-            switched:false,
+            switched:this.props.isComplete,
         }
     }
 
-    dispatchToUpdate = () =>{
-
-        
+    dispatchToUpdate = () =>{ 
         let todoItem = {
             uuid:this.props.todoUUID,
             updatedDate:Date.now(),
@@ -39,7 +37,7 @@ class ToDoItem extends Component{
                 title={this.props.title}
                 hideChevron={true}
                 switchButton
-                switched={this.props.isComplete}
+                switched={this.state.switched}
                 onSwitch= {() => {
                     this.setState(
                         (state) => ({switched:!this.state.switched}),
@@ -49,6 +47,7 @@ class ToDoItem extends Component{
                 }}
                 containerStyle={Styles.listItem}
                 titleStyle={this.state.switched ? Styles.titleComplete : Styles.title}
+                
             />
 
         )

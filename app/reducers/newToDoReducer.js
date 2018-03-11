@@ -31,17 +31,17 @@ const updateToDoItem = (state, action) => {
 
    
     todoItem = state.todoItems[action.todoItem.uuid];
-    console.log('Todo Item descri[topm] ', action.todoItem.description);
+    
     if( action.todoItem.description){
         todoItem.description = action.todoItem.description;
     }
-    if(action.todoItem.updatedDate != 'undefined')
+    if(action.todoItem.updatedDate)
         todoItem.updatedDate = action.todoItem.updatedDate;
-    if(action.todoItem.isComplete != 'undefined') {
+    if(action.todoItem.isComplete) {
         todoItem.isComplete = action.todoItem.isComplete
     }    
 
-    console.log('Todo Item ', todoItem);
+
     return{
         ...state.todoItems,
         [action.todoItem.uuid] : todoItem

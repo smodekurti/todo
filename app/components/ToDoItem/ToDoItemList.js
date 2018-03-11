@@ -32,9 +32,13 @@ class ToDoItemList extends Component{
         
          const containerStyles= [Styles.title];
          let list = Object.values(this.props.todoItems);
-         console.log(list);
+         
          if(list == null)
           list = new Array();
+
+          list.sort(function (a,b){
+            return a.updatedTime > b.updatedTime;
+          });
 
         return(
             <ScrollView style={Styles.container} showsVerticalScrollIndicator={false} > 
