@@ -10,19 +10,19 @@ const Styles = StyleSheet.create({
     },
     input:{
         height:50,
-        width:'70%',
+        width:'97%',
         backgroundColor: 'rgba(255,255,255,0.3)',
         marginBottom:15,
-        paddingHorizontal:10,
+        paddingHorizontal:20,
         fontSize:20,
         color: 'white',
-        borderRadius:5
+        borderRadius:25
         
 
     },
     buttonContainer:{
-        height:50,
-        width:80,
+        height:45,
+        width:70,
         backgroundColor: '#3498db',
         alignItems:'center',
         justifyContent: 'center',        

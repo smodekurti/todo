@@ -7,11 +7,12 @@ const Styles = StyleSheet.create({
     list:{
        backgroundColor: '#485163',
        borderBottomColor: '#f1f2f6',
-       marginBottom: 20
+       marginBottom: 10
     },
     listItem:{
-        marginTop: 20,
-        marginBottom:20,
+        marginTop: 10,
+        marginBottom:10,
+
     },
     title:{
         color: 'white',

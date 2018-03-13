@@ -40,10 +40,11 @@ class NewToDoItem extends Component {
                 value={this.state.todo}
                 autoFocus
                 />
-
+{/*}
                 <TouchableOpacity style={Styles.buttonContainer} onPress={() => this.handleNewToDo()}>
                     <Text style={Styles.text}>Add</Text>
-                </TouchableOpacity>
+        </TouchableOpacity>
+*/}
             </View>
         )
     }
