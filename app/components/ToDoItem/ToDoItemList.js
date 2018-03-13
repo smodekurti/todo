@@ -60,14 +60,8 @@ class ToDoItemList extends Component{
     }
 }
 
-const mapStateToProps = (state) => {
-  const todoItems = state.newToDoReducer.todoItems;;
- 
-  return{
-    todoItems:todoItems
-  };
-};
+;
 
-export default connect(mapStateToProps) (ToDoItemList);
+export default ToDoItemList;
 //export default ToDoItemList
 

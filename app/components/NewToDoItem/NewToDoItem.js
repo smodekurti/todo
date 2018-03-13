@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, TextInput, TouchableOpacity, Dimensions, Text} from 'react-native';
+import {StyleSheet, View, TextInput, TouchableOpacity, Dimensions, Text, Keyboard} from 'react-native';
 import PropTypes from 'prop-types';
 import {addNewTodo} from '../../actions/NewToDo';
 import {generateUUID} from '../../utils/uuid'
@@ -25,6 +25,7 @@ class NewToDoItem extends Component {
         todoItem.updatedDate=Date.now()
         todoItem.isComplete=false
         this.setState({todo:''});
+        
         this.props.dispatch(addNewTodo(todoItem));
     }
     render(){
@@ -37,6 +38,7 @@ class NewToDoItem extends Component {
                 onSubmitEditing={this.handleNewToDo}
                 onChangeText={(text) => this.setState({todo : text})}
                 value={this.state.todo}
+                autoFocus
                 />
 
                 <TouchableOpacity style={Styles.buttonContainer} onPress={() => this.handleNewToDo()}>

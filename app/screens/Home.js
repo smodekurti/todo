@@ -19,11 +19,8 @@ class Home extends Component {
       <View style={Styles.container}>
         <StatusBar barStyle="light-content" />
         <KeyboardAvoidingView behavior="padding">
-           <NewToDoItem 
-            
-           />
-
-           <ToDoItemList />
+           <NewToDoItem />
+           <ToDoItemList todoItems={this.props.todoItems}/>
         </KeyboardAvoidingView>
       </View>
     );
@@ -44,4 +41,12 @@ const Styles = StyleSheet.create({
   }
 });
 
-export default Home;
+const mapStateToProps = (state) => {
+  const todoItems = state.newToDoReducer.todoItems;;
+ 
+  return{
+    todoItems:todoItems
+  };
+}
+
+export default connect(mapStateToProps) (Home);
