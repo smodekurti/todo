@@ -20,6 +20,7 @@ class ToDoItem extends Component{
     }
 
     dispatchToUpdate = () =>{ 
+        //console.log(this.state.switched);
         let todoItem = {
             uuid:this.props.todoUUID,
             updatedDate:Date.now(),

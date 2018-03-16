@@ -37,7 +37,7 @@ const updateToDoItem = (state, action) => {
     }
     if(action.todoItem.updatedDate)
         todoItem.updatedDate = action.todoItem.updatedDate;
-    if(action.todoItem.isComplete) {
+    if(action.todoItem.isComplete!== null) {
         todoItem.isComplete = action.todoItem.isComplete
     }    
 
